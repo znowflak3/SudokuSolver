@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "/home/znowbolic/.dotnet/store/|arch|/|tfm|",
+      "/home/znowbolic/.nuget/packages"
+    ]
+  }
+}

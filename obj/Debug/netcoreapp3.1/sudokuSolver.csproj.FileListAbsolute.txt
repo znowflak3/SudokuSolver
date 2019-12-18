@@ -1,0 +1,11 @@
+/home/znowbolic/C#-Workspace/sudokuSolver/bin/Debug/netcoreapp3.1/sudokuSolver
+/home/znowbolic/C#-Workspace/sudokuSolver/bin/Debug/netcoreapp3.1/sudokuSolver.deps.json
+/home/znowbolic/C#-Workspace/sudokuSolver/bin/Debug/netcoreapp3.1/sudokuSolver.runtimeconfig.json
+/home/znowbolic/C#-Workspace/sudokuSolver/bin/Debug/netcoreapp3.1/sudokuSolver.runtimeconfig.dev.json
+/home/znowbolic/C#-Workspace/sudokuSolver/bin/Debug/netcoreapp3.1/sudokuSolver.dll
+/home/znowbolic/C#-Workspace/sudokuSolver/bin/Debug/netcoreapp3.1/sudokuSolver.pdb
+/home/znowbolic/C#-Workspace/sudokuSolver/obj/Debug/netcoreapp3.1/sudokuSolver.csprojAssemblyReference.cache
+/home/znowbolic/C#-Workspace/sudokuSolver/obj/Debug/netcoreapp3.1/sudokuSolver.AssemblyInfoInputs.cache
+/home/znowbolic/C#-Workspace/sudokuSolver/obj/Debug/netcoreapp3.1/sudokuSolver.AssemblyInfo.cs
+/home/znowbolic/C#-Workspace/sudokuSolver/obj/Debug/netcoreapp3.1/sudokuSolver.dll
+/home/znowbolic/C#-Workspace/sudokuSolver/obj/Debug/netcoreapp3.1/sudokuSolver.pdb
