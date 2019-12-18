@@ -42,15 +42,15 @@ namespace sudokuSolver
             }
             return true;
         }
-        static bool IsValid(int[,] board, int row, int col, int num)
+        static bool IsValid(int[,] board)
         {
+            if(!IsValidInHorizontal(board))
+                return false;
+            if(!IsValidInVertical(board))
+                return false;
+            if(!IsValidInSection(board))
+                return false;
 
-            for(int h = 0; h < 9; h++)
-            {
-                Console.WriteLine(board[row, h]);
-                if(num == board[row, h])
-                    return false;
-            }
             return true;
         }
         static bool IsValidInHorizontal(int[,] board)
