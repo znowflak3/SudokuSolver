@@ -16,31 +16,73 @@ namespace sudokuSolver
             {0, 0, 0, 4, 1, 9, 0, 0, 5},
             {0, 0, 0, 0, 8, 0, 0, 7, 9}
         };
-        int[,] sBoardFail = new int[,]{
-            {'8', '3', '0', '0', '7', '0', '0', '0', '0'},
-            {'6', '0', '0', '1', '9', '5', '0', '0', '0'},
-            {'0', '9', '8', '0', '0', '0', '0', '6', '0'},
-            {'8', '0', '0', '0', '6', '0', '0', '0', '3'},
-            {'4', '0', '0', '8', '0', '3', '0', '0', '1'},
-            {'7', '0', '0', '0', '2', '0', '0', '0', '6'},
-            {'0', '6', '0', '0', '0', '0', '2', '8', '0'},
-            {'0', '0', '0', '4', '1', '9', '0', '0', '5'},
-            {'0', '0', '0', '0', '8', '0', '0', '7', '9'}
+        static int[,] sBoardFail = new int[,]{
+            {5, 3, 7, 0, 7, 0, 0, 0, 0},
+            {6, 0, 7, 1, 9, 5, 0, 0, 0},
+            {0, 9, 8, 0, 0, 0, 0, 6, 0},
+            {8, 0, 0, 8, 6, 0, 8, 0, 3},
+            {4, 0, 0, 8, 0, 3, 0, 0, 1},
+            {7, 0, 0, 0, 2, 0, 0, 0, 6},
+            {0, 6, 0, 0, 0, 0, 2, 8, 0},
+            {0, 0, 0, 4, 1, 9, 0, 0, 5},
+            {0, 0, 0, 0, 8, 0, 0, 7, 9}
         };
-        static bool SolveSudoku(int[,] board, int row, int col, int num)
+        static bool SolveSudoku(int[,] board)
         {
-            //horizontal
-            for(int r = 0; r < board.GetLength(0); r++)
+            int _row = -1;
+            int _col = -1;
+            bool isEmpty = true;
+
+            for(int row = 0; row < board.GetLength(0); row++)
             {
-                    if(board[row, r] == num)
-                        return false;
+                for(int col = 0; col < board.GetLength(0); col++)
+                {
+                    if(board[row, col] == 0)
+                    {
+                        
+                        _row = row;
+                        _col = col;
+
+                        isEmpty = false;
+                        break;
+                    }
+                }
+                if(!isEmpty)
+                    break;
             }
-            for(int c = 0; c < board.GetLength(0); c++)
+            if(isEmpty)
+                return true;
+
+            for(int test = 1; test <= board.GetLength(0); test++)
             {
-                    if(board[c, col] == num)
-                        return false;
+                if(IsValid(board))
+                {
+                    int[,] newBoard = board;
+                    newBoard[_row, _col] = test;
+
+                    if(SolveSudoku(newBoard))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        board[_row, _col] = 0;
+                    }
+                }
             }
-            return true;
+            return false;
+        }
+        static void PrintOut(int[,] board)
+        {
+            for(int row = 0; row < board.GetLength(0); row++)
+            {
+                for(int col = 0 ; col < board.GetLength(0); col++)
+                {
+                    Console.Write(board[row, col]);
+                    
+                }
+                Console.WriteLine();
+            }
         }
         static bool IsValid(int[,] board)
         {
@@ -144,13 +186,19 @@ namespace sudokuSolver
 
         static void Main(string[] args)
         {
-            IsValidInHorizontal(sBoard);
-            IsValidInVertical(sBoard);
-            IsValidInSection(sBoard);
-            if(SolveSudoku(sBoard, 0, 0, 8))
-                Console.WriteLine("Hello World!");
+            if(IsValid(sBoard))
+            {
+                Console.WriteLine("first test passed!");
+            }
+            if(!IsValid(sBoardFail))
+            {
+                Console.WriteLine("second test passed!");
+            }
+            if(SolveSudoku(sBoard))
+                PrintOut(sBoard);
             else
-                Console.WriteLine("can't solve sudoku");
+                Console.WriteLine("No Solution");
+
             Console.ReadLine();
         }
     }
