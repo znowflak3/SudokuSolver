@@ -5,6 +5,7 @@ namespace sudokuSolver
 {
     class Program
     {
+
         static int[,] sBoard = new int[,]{
             {5, 3, 0, 0, 7, 0, 0, 0, 0},
             {6, 0, 0, 1, 9, 5, 0, 0, 0},
@@ -15,6 +16,28 @@ namespace sudokuSolver
             {0, 6, 0, 0, 0, 0, 2, 8, 0},
             {0, 0, 0, 4, 1, 9, 0, 0, 5},
             {0, 0, 0, 0, 8, 0, 0, 7, 9}
+        };
+        static int[,] sBoard2 = new int[,]{
+            {0, 0, 0, 4, 0, 1, 6, 3, 0},
+            {8, 0, 0, 3, 6, 0, 0, 0, 2},
+            {3, 6, 9, 0, 0, 0, 0, 7, 0},
+            {0, 2, 5, 0, 0, 0, 0, 0, 9},
+            {0, 0, 3, 0, 5, 2, 8, 0, 0},
+            {0, 4, 0, 6, 0, 0, 7, 0, 0},
+            {2, 0, 7, 0, 0, 6, 0, 0, 0},
+            {4, 0, 0, 0, 7, 0, 0, 9, 0},
+            {0, 0, 0, 0, 0, 8, 5, 1, 7}
+        };
+        static int[,] sBoard3 = new int[,]{
+            {0, 0, 0, 4, 0, 1, 6, 3, 0},
+            {8, 0, 0, 3, 6, 0, 0, 0, 2},
+            {3, 6, 9, 0, 0, 0, 0, 7, 0},
+            {0, 2, 5, 0, 0, 0, 0, 0, 9},
+            {0, 0, 3, 0, 5, 2, 8, 0, 0},
+            {0, 4, 0, 6, 0, 0, 7, 0, 0},
+            {2, 0, 7, 0, 0, 6, 0, 0, 0},
+            {4, 0, 0, 0, 7, 0, 0, 9, 0},
+            {0, 0, 0, 0, 0, 8, 5, 1, 7}
         };
         static int[,] sBoardFail = new int[,]{
             {5, 3, 7, 0, 7, 0, 0, 0, 0},
@@ -55,12 +78,13 @@ namespace sudokuSolver
 
             for(int test = 1; test <= board.GetLength(0); test++)
             {
+                
+                
                 if(IsValid(board))
                 {
-                    int[,] newBoard = board;
-                    newBoard[_row, _col] = test;
+                    board[_row, _col] = test;
 
-                    if(SolveSudoku(newBoard))
+                    if(SolveSudoku(board) && IsValid(board))
                     {
                         return true;
                     }
@@ -186,7 +210,13 @@ namespace sudokuSolver
 
         static void Main(string[] args)
         {
+
             if(IsValid(sBoard))
+            {
+                Console.WriteLine("first test passed!");
+
+            }
+            if(IsValid(sBoard2))
             {
                 Console.WriteLine("first test passed!");
             }
@@ -194,10 +224,16 @@ namespace sudokuSolver
             {
                 Console.WriteLine("second test passed!");
             }
-            if(SolveSudoku(sBoard))
-                PrintOut(sBoard);
+            if(SolveSudoku(sBoard2))
+                PrintOut(sBoard2);
             else
                 Console.WriteLine("No Solution");
+            
+            IsValidInHorizontal(sBoard2);
+            IsValidInVertical(sBoard2);
+            IsValidInSection(sBoard2);
+
+            PrintOut(sBoard2);
 
             Console.ReadLine();
         }
